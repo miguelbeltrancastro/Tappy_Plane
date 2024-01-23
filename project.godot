@@ -13,6 +13,11 @@ config_version=5
 config/name="Tappy_Plane"
 config/features=PackedStringArray("4.2", "Mobile")
 
+[autoload]
+
+GameManager="*res://singletons/game_manager.gd"
+ScoreManager="*res://singletons/score_manager.gd"
+
 [display]
 
 window/size/viewport_width=480
