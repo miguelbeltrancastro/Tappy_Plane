@@ -6,9 +6,11 @@ extends Node2D
 @onready var spawn_u = $SpawnU
 @onready var spawn_l = $SpawnL
 @onready var spawn_timer = $SpawnTimer
+@onready var game_over = $CanvasLayer/GameOver
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	game_over.hide()
 	SignalManager.on_plane_died.connect(_on_plane_died)
 	ScoreManager.set_score(0)
 	randomize()
@@ -37,3 +39,4 @@ func _on_spaw_timer_timeout():
 
 func _on_plane_died():
 	stop_pipes()
+	game_over.show()
