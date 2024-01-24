@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgmqcdenltd3a"]
+[gd_scene load_steps=9 format=3 uid="uid://dgmqcdenltd3a"]
 
 [ext_resource type="Texture2D" uid="uid://bxsk2xk160ren" path="res://assets/background/rocks_2.png" id="1_0l3bq"]
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_h7vyg"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://csc08ky44dd5" path="res://scenes/pipes/pipes.tscn" id="4_km5pf"]
 [ext_resource type="PackedScene" uid="uid://frkgsbobdiwv" path="res://scenes/hud/hud.tscn" id="6_8dwjq"]
 [ext_resource type="PackedScene" uid="uid://cxd7lxqe8jdbd" path="res://scenes/game_over/game_over.tscn" id="7_q76mv"]
+[ext_resource type="AudioStream" uid="uid://drcuftdnyshtc" path="res://assets/audio/bgm_menu.mp3" id="8_syhny"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_h7vyg")
@@ -42,5 +43,9 @@ position = Vector2(530, 540)
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("6_8dwjq")]
 
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource("7_q76mv")]
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_syhny")
+autoplay = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spaw_timer_timeout"]
