@@ -40,5 +40,4 @@ position = Vector2(530, 540)
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("6_8dwjq")]
 
-[connection signal="on_plane_died" from="Plane" to="." method="_on_plane_died"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spaw_timer_timeout"]

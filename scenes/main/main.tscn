@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfsf6d6blaj5o"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_gl33v"]
+[ext_resource type="Texture2D" uid="uid://dm71pkbi6872p" path="res://assets/background/sky.png" id="1_uo0ty"]
+[ext_resource type="LabelSettings" uid="uid://b3lmg2pmxhsju" path="res://assets/sh_48_title.tres" id="1_uxj7c"]
+[ext_resource type="LabelSettings" uid="uid://bouinkhckpqdw" path="res://assets/sh_48_white.tres" id="2_6uby7"]
+[ext_resource type="LabelSettings" uid="uid://by8wjl2j7r18t" path="res://assets/sh_24_red.tres" id="3_3uwd4"]
+
+[sub_resource type="Animation" id="Animation_6lj1w"]
+resource_name = "flash"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/PressSpace:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8cly8"]
+_data = {
+"flash": SubResource("Animation_6lj1w")
+}
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gl33v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_uo0ty")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 24
+
+[node name="Title" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Tappy
+Plane"
+label_settings = ExtResource("1_uxj7c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PressSpace" type="Label" parent="MarginContainer"]
+self_modulate = Color(1, 1, 1, 0.572222)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Press Space
+to
+Play"
+label_settings = ExtResource("2_6uby7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSText" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "High Score: "
+label_settings = ExtResource("3_3uwd4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HScore" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "0000"
+label_settings = ExtResource("3_3uwd4")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8cly8")
+}
+autoplay = "flash"
