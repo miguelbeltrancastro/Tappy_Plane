@@ -8,6 +8,7 @@ const POWER: float = -400.0
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
+@onready var engine_sound = $EngineSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,6 +33,7 @@ func fly() -> void:
 		animation_player.play("power")
 
 func die() -> void:
+	engine_sound.stop()
 	sprite.stop()
 	set_physics_process(false)
 	SignalManager.on_plane_died.emit()
