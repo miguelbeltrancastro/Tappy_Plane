@@ -34,6 +34,11 @@ fly={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="plane"
+2d_physics/layer_2="barrier"
+
 [rendering]
 
 renderer/rendering_method="mobile"
